@@ -1,4 +1,4 @@
----
+<!-- ---
 interface Props {
 	title: string;
 }
@@ -47,4 +47,25 @@ const { title } = Astro.props;
 			Courier New,
 			monospace;
 	}
-</style>
+</style> -->
+
+---
+import Navbar from '../components/Navbar';
+import { ViewTransitions } from 'astro:transitions';
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body class="bg-black overflow-x-hidden text-neutral-300 antialiased selection:bg-white selection:text-cyan-900">
+    <div class="container mx-auto px-4 md:px-40 min-h-screen flex flex-col">
+      <Navbar client:load />
+      <slot />
+    </div>
+  </body>
+</html>
