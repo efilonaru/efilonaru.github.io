@@ -1,5 +1,4 @@
 import React from "react";
-import PopUpText from "./PopUpText";
 
 const Hero = () => {
   return (
