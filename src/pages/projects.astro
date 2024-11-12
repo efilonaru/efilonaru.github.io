@@ -1,0 +1,20 @@
+---
+import '@/styles/globals.css'
+import Layout from '../layouts/Layout.astro';
+import LinkCard from '../components/Card.astro';
+// import Projects from '../components/Projects';
+---
+
+<Layout title="Projects">
+  <div
+    transition:animate="slide"
+    class="page-content"
+  >
+  <h1 class="text-2xl font-bold px-60 text-zinc-400">Projects</h1>
+    <ul class="flex gap-4 px-60 pt-4">
+      <LinkCard href="/project1" imageUrl='https://placehold.co/600x400'  title="Project One" body="A description of project one." />
+      <LinkCard href="/project2" imageUrl='https://placehold.co/600x400'  title="Project Two" body="A description of project two." />
+      <LinkCard href="/project3" imageUrl='https://placehold.co/600x400' title="Project Three" body="A description of project three." />
+    </ul>
+  </div>
+</Layout>

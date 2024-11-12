@@ -2,12 +2,12 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className=" mt-20 px-60 flex items-center justify-between py-6 pb-10">
-      <div className=" flex items-center justify-center gap-4 text-base font-jetbrains ">
-        <nav>
-          <a href="/">Home</a>
-          <a href="/blog">Blog</a>
-          <a href="/projects">Projects</a>
+    <nav className="mt-20 px-60 flex items-center justify-between py-6 pb-10">
+      <div className="flex items-center justify-center text-base font-jetbrains">
+        <nav className="flex gap-4">
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="/blog">Blog</NavLink>
+          <NavLink href="/projects">Projects</NavLink>
         </nav>
       </div>
     </nav>

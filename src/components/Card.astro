@@ -1,18 +1,19 @@
 ---
 interface Props {
+	imageUrl: string;
 	title: string;
 	body: string;
 	href: string;
 }
 
-const { href, title, body } = Astro.props;
+const { href, imageUrl, title, body } = Astro.props;
 ---
 
 <li class="link-card">
 	<a href={href}>
+		<img src={imageUrl} alt="Card Image" class="card-image" />
 		<h2>
 			{title}
-			<span>&rarr;</span>
 		</h2>
 		<p>
 			{body}
@@ -24,7 +25,8 @@ const { href, title, body } = Astro.props;
 		list-style: none;
 		display: flex;
 		padding: 1px;
-		background-color: #23262d;
+		flex-direction: column;
+		background-color: #1b1b1c;
 		background-image: none;
 		background-size: 400%;
 		border-radius: 7px;
@@ -39,9 +41,17 @@ const { href, title, body } = Astro.props;
 		padding: calc(1.5rem - 1px);
 		border-radius: 8px;
 		color: white;
-		background-color: #23262d;
+		background-color: #0a0a0a;
 		opacity: 0.8;
 	}
+
+		.card-image {
+		width: 100%; /* Make the image full width */
+		height: auto; /* Keep aspect ratio */
+		border-radius: 7px 7px 0 0; /* Rounded top corners */
+		object-fit: cover; /* Ensure the image covers the area */
+	}
+	
 	h2 {
 		margin: 0;
 		font-size: 1.25rem;
