@@ -2,8 +2,8 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav class=" mt-20 px-60 flex items-center justify-between py-6 pb-10">
-      <div class=" flex items-center justify-center gap-4 text-base font-jetbrains ">
+    <nav className=" mt-20 px-60 flex items-center justify-between py-6 pb-10">
+      <div className=" flex items-center justify-center gap-4 text-base font-jetbrains ">
         <nav>
           <a href="/">Home</a>
           <a href="/blog">Blog</a>
