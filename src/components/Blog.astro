@@ -1,0 +1,29 @@
+---
+// BlogCard.astro
+interface Props {
+  title: string;
+  date: string;
+  description: string;
+  href: string;
+}
+
+const { title, date, description, href } = Astro.props;
+---
+
+<article class="max-w-2xl mb-8">
+  <div class="space-y-2">
+    <div class="flex items-center space-x-2 text-sm text-zinc-500">
+      <time datetime={date}>{date}</time>
+    </div>
+    
+    <a href={href} class="block">
+      <h2 class="text-xl font-semibold hover:text-blue-500 transition-colors duration-200">
+        {title}
+      </h2>
+    </a>
+    
+    <p class="text-zinc-600 line-clamp-2">
+      {description}
+    </p>
+  </div>
+</article>

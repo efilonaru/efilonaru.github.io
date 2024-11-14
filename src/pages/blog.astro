@@ -1,11 +1,36 @@
 ---
 import '@/styles/globals.css'
 import Layout from '../layouts/Layout.astro';
+import BlogCard from '../components/Blog.astro';
 ---
 
 <Layout title="Blog">
 
-    <div class="h-screen flex items-center justify-center">
+    <div class="px-60 ">
+    <h1 class="text-2xl font-bold mb-8 text-zinc-400">Blog Posts</h1>
+    
+    <div class="space-y-8">
+      <BlogCard
+        href="/blog/first-post"
+        title="Getting Started with Astro"
+        date="2024-03-15"
+        description="Learn how to build fast, content-focused websites with Astro. This guide will walk you through the basics of setting up your first Astro project and understanding its core concepts."
+      />
+      
+      <BlogCard
+        href="/blog/second-post"
+        title="Building Modern Web Applications"
+        date="2024-03-10"
+        description="Explore the latest techniques and best practices for building performant, scalable web applications. We'll cover everything from state management to deployment strategies."
+      />
+      
+      <BlogCard
+        href="/blog/third-post"
+        title="The Future of Web Development"
+        date="2024-03-05"
+        description="What does the future hold for web development? Let's explore emerging technologies, trends, and tools that are shaping the future of how we build for the web."
+      />
     </div>
+  </div>
 
 </Layout>
