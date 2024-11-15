@@ -1,0 +1,12 @@
+---
+// [slug].astro - Dynamic route for individual blog posts
+import Layout from '../../layouts/Layout.astro';
+
+const { slug } = Astro.params;
+const post = await import(`../posts/${slug}.md`);
+const { title, date } = post.frontmatter;
+---
+
+<Layout title={title} date={date}>
+  {post.Content}
+</Layout>
