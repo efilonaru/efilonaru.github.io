@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <nav className=" mt-20 px-60 flex items-center justify-between ">
+    <nav className=" mt-20  flex items-center justify-between ">
       <div className="flex items-center justify-center gap-2 text-sm  font-jetbrains ">
         <a
           href="https://linkedin.com/in/naufal-yasir"

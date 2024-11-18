@@ -2,9 +2,9 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="mt-20 px-60 flex items-center justify-between py-6 pb-10">
-      <div className="flex items-center justify-center text-base font-jetbrains">
-        <nav className="flex gap-4">
+    <nav className="flex-row mt-20 items-start justify-start py-6 pb-10">
+      <div className="items-start  text-base font-jetbrains">
+        <nav className="flex gap-4 mx-auto">
           <NavLink href="/">Home</NavLink>
           <NavLink href="/blog">Blog</NavLink>
           <NavLink href="/projects">Projects</NavLink>

@@ -1,0 +1,10 @@
+---
+import '@/styles/globals.css'
+const { frontmatter } = Astro.props;
+import Layout from "./Layout.astro";
+---
+<Layout title={frontmatter.title} date={frontmatter.date}>
+    <article class="prose max-w-none ">
+        <slot />
+    </article>
+</Layout>

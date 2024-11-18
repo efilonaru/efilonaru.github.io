@@ -7,9 +7,7 @@ const posts = await Astro.glob('./posts/*.md');
 ---
 
 <Layout title="Blog">
-    <div class="px-60">
         <h1 class="text-2xl font-bold mb-8 text-zinc-400">Blog Posts</h1>
-        
         <div class="space-y-8 bg-black">
           {posts.map(post => (
             <BlogCard
@@ -19,6 +17,4 @@ const posts = await Astro.glob('./posts/*.md');
               description={post.frontmatter.description}
             />
           ))}
-        </div>
-    </div>
 </Layout>

@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="px-60">
+    <div className="">
       <h1 className="text-2xl font-bold  text-zinc-400">Naufal Yasir</h1>
       <p className="mt-4 font-jetbrains  text-zinc-500">
         Aspiring developer with a passion for crafting digital experiences. From
