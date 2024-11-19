@@ -10,7 +10,6 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    ,
     react(),
   ],
   site: "https://efilonaru.me",

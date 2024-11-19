@@ -1,12 +1,26 @@
 ---
-// [slug].astro - Dynamic route for individual blog posts
+// [slug].astro
 import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 
-const { slug } = Astro.params;
-const post = await import(`../posts/${slug}.md`);
-const { title, date } = post.frontmatter;
+// Generate static paths at build time
+export async function getStaticPaths() {
+  const posts = await Astro.glob('./*.md');  // Get all .md files in the current directory
+  
+  return posts.map(post => ({
+    params: {
+      slug: post.file.split('/').pop().split('.').shift()  // Get filename without extension
+    },
+    props: { post }
+  }));
+}
+
+// Get the post data from the props
+const { post } = Astro.props;
+const { frontmatter: { title, date } } = post;
+const { Content } = post;
 ---
 
 <Layout title={title} date={date}>
-  {post.Content}
+  <Content />
 </Layout>
