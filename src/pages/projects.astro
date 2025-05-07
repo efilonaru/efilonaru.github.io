@@ -1,22 +1,95 @@
 ---
-import '@/styles/globals.css'
-import Layout from '../layouts/Layout.astro';
-import LinkCard from '../components/Card.astro';
-// import Projects from '../components/Projects';
+import "@/styles/globals.css";
+import Layout from "../layouts/Layout.astro";
+import LinkCard from "../components/Card.astro";
 ---
 
 <Layout title="Projects">
-  <!-- <div
-    transition:animate="slide"
-    class="page-content"
-  > -->
-  <h1 class="text-2xl font-bold  text-zinc-400">Projects</h1>
-    <ul class="grid grid-cols-3 gap-4 pt-4">
-      <LinkCard href="/project1" imageUrl='https://placehold.co/600x400'  title="Project One" body="A description of project one." />
-      <LinkCard href="/project2" imageUrl='https://placehold.co/600x400'  title="Project Two" body="A description of project two." />
-      <LinkCard href="/project3" imageUrl='https://placehold.co/600x400' title="Project Three" body="A description of project three." />
-      <LinkCard href="/project4" imageUrl='https://placehold.co/600x400' title="Project Four" body="A description of project four." />
-      <LinkCard href="/project5" imageUrl='https://placehold.co/600x400' title="Project Five" body="A description of project five." />
-    </ul>
+  <div class="space-y-2 mb-8">
+    <h1 class="text-2xl font-bold text-zinc-400">Projects</h1>
+    <p class="text-zinc-400">A collection of my work and experiments.</p>
+  </div>
+
+  <!-- Project Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <a href="/project1" class="group">
+      <div
+        class="p-6 rounded-lg border border-zinc-800 hover:border-zinc-600 transition-colors"
+      >
+        <h2
+          class="text-xl font-semibold text-zinc-300 group-hover:text-white transition-colors"
+        >
+          Project One
+        </h2>
+        <p class="mt-2 text-zinc-400">
+          A brief description of project one that highlights its key features
+          and technologies.
+        </p>
+      </div>
+    </a>
+
+    <a href="/project2" class="group">
+      <div
+        class="p-6 rounded-lg border border-zinc-800 hover:border-zinc-600 transition-colors"
+      >
+        <h2
+          class="text-xl font-semibold text-zinc-300 group-hover:text-white transition-colors"
+        >
+          Project Two
+        </h2>
+        <p class="mt-2 text-zinc-400">
+          A brief description of project two that highlights its key features
+          and technologies.
+        </p>
+      </div>
+    </a>
+
+    <a href="/project3" class="group">
+      <div
+        class="p-6 rounded-lg border border-zinc-800 hover:border-zinc-600 transition-colors"
+      >
+        <h2
+          class="text-xl font-semibold text-zinc-300 group-hover:text-white transition-colors"
+        >
+          Project Three
+        </h2>
+        <p class="mt-2 text-zinc-400">
+          A brief description of project three that highlights its key features
+          and technologies.
+        </p>
+      </div>
+    </a>
+
+    <a href="/project4" class="group">
+      <div
+        class="p-6 rounded-lg border border-zinc-800 hover:border-zinc-600 transition-colors"
+      >
+        <h2
+          class="text-xl font-semibold text-zinc-300 group-hover:text-white transition-colors"
+        >
+          Project Four
+        </h2>
+        <p class="mt-2 text-zinc-400">
+          A brief description of project four that highlights its key features
+          and technologies.
+        </p>
+      </div>
+    </a>
+
+    <a href="/project5" class="group">
+      <div
+        class="p-6 rounded-lg border border-zinc-800 hover:border-zinc-600 transition-colors"
+      >
+        <h2
+          class="text-xl font-semibold text-zinc-300 group-hover:text-white transition-colors"
+        >
+          Project Five
+        </h2>
+        <p class="mt-2 text-zinc-400">
+          A brief description of project five that highlights its key features
+          and technologies.
+        </p>
+      </div>
+    </a>
   </div>
 </Layout>

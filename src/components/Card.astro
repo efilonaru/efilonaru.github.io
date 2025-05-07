@@ -1,71 +1,51 @@
 ---
 interface Props {
-	imageUrl: string;
-	title: string;
-	body: string;
-	href: string;
+  imageUrl: string;
+  title: string;
+  body: string;
+  href: string;
 }
 
 const { href, imageUrl, title, body } = Astro.props;
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<img src={imageUrl} alt="Card Image" class="card-image" />
-		<h2>
-			{title}
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
-<style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 1px;
-		flex-direction: column;
-		background-color: #1b1b1c;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 7px;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	}
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
-		color: white;
-		background-color: #0a0a0a;
-		opacity: 0.8;
-	}
-
-		.card-image {
-		width: 100%; /* Make the image full width */
-		height: auto; /* Keep aspect ratio */
-		border-radius: 7px 7px 0 0; /* Rounded top corners */
-		object-fit: cover; /* Ensure the image covers the area */
-	}
-	
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
-	}
-</style>
+<a href={href} class="block h-full">
+  <div
+    class="relative overflow-hidden rounded-xl bg-zinc-900 transition-all duration-300 group-hover:bg-zinc-800"
+  >
+    <div class="aspect-[16/9] overflow-hidden">
+      <img
+        src={imageUrl}
+        alt={title}
+        class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+      />
+    </div>
+    <div class="p-8">
+      <h2
+        class="text-2xl font-semibold text-zinc-100 transition-colors duration-300 group-hover:text-white"
+      >
+        {title}
+      </h2>
+      <p class="mt-4 text-base text-zinc-400 line-clamp-3">
+        {body}
+      </p>
+      <div class="mt-6 flex items-center text-base text-zinc-400">
+        <span class="group-hover:text-zinc-300 transition-colors duration-300"
+          >View project</span
+        >
+        <svg
+          class="ml-2 h-5 w-5 transform transition-transform duration-300 group-hover:translate-x-1"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+</a>

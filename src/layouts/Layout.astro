@@ -1,21 +1,23 @@
 ---
-import Navbar from '../components/Navbar';
-import { ViewTransitions } from 'astro:transitions';
+import Navbar from "../components/Navbar";
+import { ViewTransitions } from "astro:transitions";
 
 const { title } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body class="bg-black text-neutral-300 antialiased selection:bg-white selection:text-cyan-900">
+  <body
+    class="bg-black text-neutral-300 antialiased selection:bg-white selection:text-cyan-900"
+  >
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <main class=" max-w-2xl mx-auto py-12">
-		<Navbar client:load />
+      <main class="max-w-2xl mx-auto py-12">
+        <Navbar client:load />
         <slot />
       </main>
     </div>

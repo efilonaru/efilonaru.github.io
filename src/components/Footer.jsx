@@ -7,11 +7,18 @@ const Footer = () => {
         <a
           href="https://linkedin.com/in/naufal-yasir"
           className="hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           lets connect on linkedin
         </a>{" "}
         /
-        <a href="https://github.com/efilonaru" className="hover:underline">
+        <a
+          href="https://github.com/efilonaru"
+          className="hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           collab with me on github
         </a>
       </div>
