@@ -1,12 +1,11 @@
 ---
-import '@/styles/globals.css'
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero';
-import Footer from '../components/Footer';
+import "@/styles/globals.css";
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="Home">
-    <Hero client:load />
-    <Footer />
-  </div>
+<Layout>
+  <Hero />
+  <Footer />
 </Layout>

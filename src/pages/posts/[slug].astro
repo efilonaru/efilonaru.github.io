@@ -1,25 +1,25 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import Layout from "../../layouts/Layout.astro";
 
 // Generate static paths at build time
 export async function getStaticPaths() {
-  const posts = await Astro.glob('./*.md');  // Get all .md files in the current directory
-  
-  return posts.map(post => ({
+  const posts = await Astro.glob("./*.md"); // Get all .md files in the current directory
+
+  return posts.map((post) => ({
     params: {
-      slug: post.file.split('/').pop().split('.').shift()  // Get filename without extension
+      slug: post.file.split("/").pop().split(".").shift(), // Get filename without extension
     },
-    props: { post }
+    props: { post },
   }));
 }
 
-// Get the post data from the props
 const { post } = Astro.props;
-const { frontmatter: { title, date } } = post;
+const {
+  frontmatter: { title, date },
+} = post;
 const { Content } = post;
 ---
 
-<Layout title={title} date={date}>
+<Layout>
   <Content />
 </Layout>

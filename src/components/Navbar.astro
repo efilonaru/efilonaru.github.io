@@ -1,0 +1,30 @@
+---
+interface Props {
+  links?: { href: string; text: string }[];
+}
+
+const {
+  links = [
+    { href: "/", text: "Home" },
+    { href: "/blog", text: "Blog" },
+    { href: "/projects", text: "Projects" },
+  ],
+} = Astro.props;
+---
+
+<nav class="flex-row mt-20 items-start justify-start py-6 pb-10">
+  <div class="items-start text-base font-jetbrains">
+    <nav class="flex gap-4 mx-auto">
+      {
+        links.map((link) => (
+          <a href={link.href} class="relative px-1 overflow-hidden group">
+            <span class="relative z-10 group-hover:text-black transition-colors duration-300">
+              {link.text}
+            </span>
+            <span class="absolute left-0 bottom-0 w-full h-0 bg-white transition-all duration-300 ease-out group-hover:h-full" />
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</nav>
