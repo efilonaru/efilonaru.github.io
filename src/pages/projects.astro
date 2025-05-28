@@ -3,16 +3,24 @@ import "@/styles/globals.css";
 import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 
-const projects = [
-  // {
-  //   title: "Project One",
-  //   description:
-  //     "A brief description of project one that highlights its key features and technologies.",
-  //   image: "https://picsum.photos/500",
-  //   repoUrl: "https://github.com/efilonaru/project-one",
-  //   liveUrl: "https://project-one.example.com",
-  //   tags: ["React", "TypeScript", "Tailwind"],
-  // },
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  repoUrl?: string;
+  liveUrl?: string;
+  tags: string[];
+}
+
+const projects: Project[] = [
+  {
+    title: "Budget Bonsai",
+    description:
+      "A brief description of project one that highlights its key features and technologies.",
+    image: "/BudgetBonsai.jpg",
+    repoUrl: "https://github.com/BudgetBonsai/BudgetBonsai-app",
+    tags: ["Kotlin", "TypeScript", "Tailwind"],
+  },
   // {
   //   title: "Project Two",
   //   description:
