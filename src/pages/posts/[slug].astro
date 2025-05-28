@@ -3,34 +3,14 @@ import Layout from "../../layouts/Layout.astro";
 
 // Generate static paths at build time
 export async function getStaticPaths() {
-  try {
-    const posts = await Astro.glob("../../content/posts/*.md");
+  const posts = await Astro.glob("../../content/posts/*.md"); // Get all .md files from the content directory
 
-    // If no posts are found, return a default path
-    if (posts.length === 0) {
-      return [
-        {
-          params: { slug: "no-posts" },
-          props: { post: null },
-        },
-      ];
-    }
-
-    return posts.map((post) => ({
-      params: {
-        slug: post.file.split("/").pop().split(".").shift(),
-      },
-      props: { post },
-    }));
-  } catch (error) {
-    // If there's an error (like no files found), return a default path
-    return [
-      {
-        params: { slug: "no-posts" },
-        props: { post: null },
-      },
-    ];
-  }
+  return posts.map((post) => ({
+    params: {
+      slug: post.file.split("/").pop().split(".").shift(), // Get filename without extension
+    },
+    props: { post },
+  }));
 }
 
 const { post } = Astro.props;
@@ -41,15 +21,5 @@ const { Content } = post;
 ---
 
 <Layout>
-  {
-    post ? (
-      <>
-        <h1>{post.frontmatter.title}</h1>
-        <p>Published on: {post.frontmatter.date}</p>
-        <post.Content />
-      </>
-    ) : (
-      <p>No blog posts available yet. Check back soon!</p>
-    )
-  }
+  <Content />
 </Layout>
