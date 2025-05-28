@@ -3,14 +3,52 @@ import Layout from "../../layouts/Layout.astro";
 
 // Generate static paths at build time
 export async function getStaticPaths() {
-  const posts = await Astro.glob("../../content/posts/*.md"); // Get all .md files from the content directory
+  try {
+    const posts = await Astro.glob("../../content/posts/*.md"); // Get all .md files from the content directory
 
-  return posts.map((post) => ({
-    params: {
-      slug: post.file.split("/").pop().split(".").shift(), // Get filename without extension
-    },
-    props: { post },
-  }));
+    // If no posts are found, return a single path with a fallback message
+    if (posts.length === 0) {
+      return [
+        {
+          params: { slug: "no-posts" },
+          props: {
+            post: {
+              frontmatter: {
+                title: "No Posts Found",
+                date: new Date().toISOString().split("T")[0],
+              },
+              Content: () =>
+                "No blog posts have been created yet. Check back later!",
+            },
+          },
+        },
+      ];
+    }
+
+    return posts.map((post) => ({
+      params: {
+        slug: post.file.split("/").pop().split(".").shift(), // Get filename without extension
+      },
+      props: { post },
+    }));
+  } catch (error) {
+    // If there's an error (like directory doesn't exist), return the fallback
+    return [
+      {
+        params: { slug: "no-posts" },
+        props: {
+          post: {
+            frontmatter: {
+              title: "No Posts Found",
+              date: new Date().toISOString().split("T")[0],
+            },
+            Content: () =>
+              "No blog posts have been created yet. Check back later!",
+          },
+        },
+      },
+    ];
+  }
 }
 
 const { post } = Astro.props;
@@ -21,5 +59,9 @@ const { Content } = post;
 ---
 
 <Layout>
-  <Content />
+  <article>
+    <h1>{title}</h1>
+    <time datetime={date}>{date}</time>
+    <Content />
+  </article>
 </Layout>
