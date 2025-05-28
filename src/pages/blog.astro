@@ -3,21 +3,30 @@ import "@/styles/globals.css";
 import Layout from "../layouts/Layout.astro";
 import BlogCard from "../components/Blog.astro";
 
-const posts = await Astro.glob("./posts/*.md");
+let posts = [];
+try {
+  posts = await Astro.glob("./posts/*.md");
+} catch (error) {
+  console.error("No blog posts found:", error);
+}
 ---
 
 <Layout>
-  <h1 class="text-2xl font-bold mb-8 text-zinc-400">Blog Posts</h1>
+  <h1 class="text-2xl font-bold mb-4 text-zinc-400">Blog Posts</h1>
   <div class="space-y-8 bg-black">
     {
-      posts.map((post) => (
-        <BlogCard
-          href={post.url}
-          title={post.frontmatter.title}
-          date={post.frontmatter.date}
-          description={post.frontmatter.description}
-        />
-      ))
+      posts.length === 0 ? (
+        <p class="text-zinc-400">No blog posts available yet.</p>
+      ) : (
+        posts.map((post) => (
+          <BlogCard
+            href={post.url}
+            title={post.frontmatter.title}
+            date={post.frontmatter.date}
+            description={post.frontmatter.description}
+          />
+        ))
+      )
     }
   </div></Layout
 >

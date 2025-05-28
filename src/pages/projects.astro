@@ -4,48 +4,48 @@ import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 
 const projects = [
-  {
-    title: "Project One",
-    description:
-      "A brief description of project one that highlights its key features and technologies.",
-    image: "https://picsum.photos/500",
-    repoUrl: "https://github.com/efilonaru/project-one",
-    liveUrl: "https://project-one.example.com",
-    tags: ["React", "TypeScript", "Tailwind"],
-  },
-  {
-    title: "Project Two",
-    description:
-      "A brief description of project two that highlights its key features and technologies.",
-    image: "https://picsum.photos/500",
-    repoUrl: "https://github.com/efilonaru/project-two",
-    tags: ["Node.js", "Express", "MongoDB"],
-  },
-  {
-    title: "Project Three",
-    description:
-      "A brief description of project three that highlights its key features and technologies.",
-    image: "https://picsum.photos/500",
-    liveUrl: "https://project-three.example.com",
-    tags: ["Python", "Django", "PostgreSQL"],
-  },
-  {
-    title: "Project Four",
-    description:
-      "A brief description of project four that highlights its key features and technologies.",
-    image: "https://picsum.photos/500",
-    repoUrl: "https://github.com/efilonaru/project-four",
-    liveUrl: "https://project-four.example.com",
-    tags: ["Vue.js", "Firebase", "Tailwind"],
-  },
-  {
-    title: "Project Five",
-    description:
-      "A brief description of project five that highlights its key features and technologies.",
-    image: "https://picsum.photos/500",
-    repoUrl: "https://github.com/efilonaru/project-five",
-    tags: ["Next.js", "Prisma", "tRPC"],
-  },
+  // {
+  //   title: "Project One",
+  //   description:
+  //     "A brief description of project one that highlights its key features and technologies.",
+  //   image: "https://picsum.photos/500",
+  //   repoUrl: "https://github.com/efilonaru/project-one",
+  //   liveUrl: "https://project-one.example.com",
+  //   tags: ["React", "TypeScript", "Tailwind"],
+  // },
+  // {
+  //   title: "Project Two",
+  //   description:
+  //     "A brief description of project two that highlights its key features and technologies.",
+  //   image: "https://picsum.photos/500",
+  //   repoUrl: "https://github.com/efilonaru/project-two",
+  //   tags: ["Node.js", "Express", "MongoDB"],
+  // },
+  // {
+  //   title: "Project Three",
+  //   description:
+  //     "A brief description of project three that highlights its key features and technologies.",
+  //   image: "https://picsum.photos/500",
+  //   liveUrl: "https://project-three.example.com",
+  //   tags: ["Python", "Django", "PostgreSQL"],
+  // },
+  // {
+  //   title: "Project Four",
+  //   description:
+  //     "A brief description of project four that highlights its key features and technologies.",
+  //   image: "https://picsum.photos/500",
+  //   repoUrl: "https://github.com/efilonaru/project-four",
+  //   liveUrl: "https://project-four.example.com",
+  //   tags: ["Vue.js", "Firebase", "Tailwind"],
+  // },
+  // {
+  //   title: "Project Five",
+  //   description:
+  //     "A brief description of project five that highlights its key features and technologies.",
+  //   image: "https://picsum.photos/500",
+  //   repoUrl: "https://github.com/efilonaru/project-five",
+  //   tags: ["Next.js", "Prisma", "tRPC"],
+  // },
 ];
 ---
 
@@ -57,16 +57,20 @@ const projects = [
 
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
     {
-      projects.map((project) => (
-        <ProjectCard
-          title={project.title}
-          description={project.description}
-          image={project.image}
-          repoUrl={project.repoUrl}
-          liveUrl={project.liveUrl}
-          tags={project.tags}
-        />
-      ))
+      projects.length === 0 ? (
+        <p class="text-zinc-400">No projects available yet.</p>
+      ) : (
+        projects.map((project) => (
+          <ProjectCard
+            title={project.title}
+            description={project.description}
+            image={project.image}
+            repoUrl={project.repoUrl}
+            liveUrl={project.liveUrl}
+            tags={project.tags}
+          />
+        ))
+      )
     }
   </div>
 </Layout>
