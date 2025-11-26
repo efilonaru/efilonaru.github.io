@@ -18,19 +18,19 @@ const {
 } = Astro.props;
 ---
 
-<div class="group">
+<div class="group h-full">
   <div
-    class="p-2 rounded-lg border border-zinc-800 hover:border-zinc-600 transition-colors"
+    class="p-2 rounded-lg border border-zinc-800 hover:border-zinc-600 transition-colors h-full flex flex-col"
   >
-    <div class="aspect-[16/9] overflow-hidden">
-      <img src={image} alt="Project Image" />
+    <div class="aspect-[16/9] overflow-hidden rounded-md">
+      <img src={image} alt="Project Image" class="w-full h-full object-cover" />
     </div>
     <h2
       class="text-lg font-semibold text-zinc-400 group-hover:text-zinc-300 transition-colors mt-2"
     >
       {title}
     </h2>
-    <p class="text-zinc-400 text-justify">
+    <p class="text-zinc-400 text-justify flex-grow">
       {description}
     </p>
     <div class="flex flex-wrap gap-2 mt-2">
