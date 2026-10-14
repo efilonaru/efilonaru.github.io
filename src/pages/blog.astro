@@ -1,19 +1,19 @@
 ---
-import "@/styles/globals.css";
 import Layout from "../layouts/Layout.astro";
 import BlogCard from "../components/Blog.astro";
 
+// Astro.glob throws when nothing matches, so empty = no posts yet
 let posts = [];
 try {
   posts = await Astro.glob("./posts/*.md");
-} catch (error) {
-  console.error("No blog posts found:", error);
+} catch {
+  posts = [];
 }
 ---
 
-<Layout>
-  <h1 class="text-2xl font-bold mb-4 text-zinc-400">Blog Posts</h1>
-  <div class="space-y-8 bg-black">
+<Layout title="Blog">
+  <h1 class="text-2xl font-bold mb-4 text-zinc-200">Blog Posts</h1>
+  <div class="space-y-8">
     {
       posts.length === 0 ? (
         <p class="text-zinc-400">No blog posts available yet.</p>
@@ -28,5 +28,5 @@ try {
         ))
       )
     }
-  </div></Layout
->
+  </div>
+</Layout>

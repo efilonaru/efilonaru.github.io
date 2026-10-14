@@ -1,20 +1,33 @@
 ---
+import "@/styles/globals.css";
 import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 import { ViewTransitions } from "astro:transitions";
 import { siteConfig } from "../config";
 
 interface Props {
   title?: string;
+  description?: string;
 }
 
-const { title = siteConfig.title } = Astro.props;
+const { title, description = siteConfig.description } = Astro.props;
+const pageTitle = title ? `${title} | ${siteConfig.author}` : siteConfig.title;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
-    <title>{title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary" />
     <ViewTransitions />
   </head>
   <body
@@ -24,6 +37,7 @@ const { title = siteConfig.title } = Astro.props;
       <main class="max-w-2xl mx-auto py-12">
         <Navbar />
         <slot />
+        <Footer />
       </main>
     </div>
   </body>

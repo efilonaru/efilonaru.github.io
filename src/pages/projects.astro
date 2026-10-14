@@ -1,18 +1,8 @@
 ---
-import "@/styles/globals.css";
 import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 
-interface Project {
-  title: string;
-  description: string;
-  image: string;
-  repoUrl?: string;
-  liveUrl?: string;
-  tags: string[];
-}
-
-const projects: Project[] = [
+const projects = [
   {
     title: "BudgetBonsai",
     description:
@@ -31,28 +21,13 @@ const projects: Project[] = [
 ];
 ---
 
-<Layout>
+<Layout title="Projects" description="A collection of my work and experiments.">
   <div class="space-y-2 mb-4">
-    <h1 class="text-2xl font-bold text-zinc-400">Projects</h1>
+    <h1 class="text-2xl font-bold text-zinc-200">Projects</h1>
     <p class="text-zinc-400">A collection of my work and experiments.</p>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-    {
-      projects.length === 0 ? (
-        <p class="text-zinc-400">No projects available yet.</p>
-      ) : (
-        projects.map((project) => (
-          <ProjectCard
-            title={project.title}
-            description={project.description}
-            image={project.image}
-            repoUrl={project.repoUrl}
-            liveUrl={project.liveUrl}
-            tags={project.tags}
-          />
-        ))
-      )
-    }
+    {projects.map((project) => <ProjectCard {...project} />)}
   </div>
 </Layout>
