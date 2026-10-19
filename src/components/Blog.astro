@@ -1,7 +1,7 @@
 ---
 interface Props {
   title: string;
-  date: string;
+  date: Date;
   description: string;
   href: string;
 }
@@ -20,7 +20,9 @@ const { title, date, description, href } = Astro.props;
     </a>
 
     <div class="flex items-center space-x-2 text-xs text-zinc-500">
-      <time datetime={date}>{date}</time>
+      <time datetime={date.toISOString()}>
+        {date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+      </time>
     </div>
 
     <p class="text-zinc-600 line-clamp-2">

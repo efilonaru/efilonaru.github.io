@@ -10,18 +10,27 @@ const {
     { href: "/projects", text: "Projects" },
   ],
 } = Astro.props;
+
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isActive = (href: string) =>
+  href === "/" ? path === "/" : path === href || path.startsWith(`${href}/`) ||
+  (href === "/blog" && path.startsWith("/posts/"));
 ---
 
-<nav class="flex-row mt-20 items-start justify-start py-6 pb-10">
-  <div class="items-start text-base font-jetbrains">
-    <nav class="flex gap-4 mx-auto">
-      {
-        links.map((link) => (
-          <a href={link.href} class="relative px-1 overflow-hidden">
-            <span class="hover:underline">{link.text}</span>
+<nav aria-label="Main" class="mt-20 py-6 pb-10">
+  <ul class="flex gap-4 text-base font-mono">
+    {
+      links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            aria-current={isActive(link.href) ? "page" : undefined}
+            class="px-1 rounded-sm hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-300 aria-[current=page]:text-zinc-100 aria-[current=page]:underline"
+          >
+            {link.text}
           </a>
-        ))
-      }
-    </nav>
-  </div>
+        </li>
+      ))
+    }
+  </ul>
 </nav>

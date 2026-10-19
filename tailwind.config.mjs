@@ -7,16 +7,6 @@ export default {
       fontFamily: {
         mono: ["JetBrains Mono", "monospace"],
       },
-      typography: {
-        DEFAULT: {
-          css: {
-            color: "#334155", // Default text color
-            h1: {
-              color: "#a1a1aa",
-            },
-          },
-        },
-      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

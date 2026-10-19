@@ -1,14 +1,11 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import BlogCard from "../components/Blog.astro";
 
-// Astro.glob throws when nothing matches, so empty = no posts yet
-let posts = [];
-try {
-  posts = await Astro.glob("./posts/*.md");
-} catch {
-  posts = [];
-}
+const posts = (await getCollection("posts", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 ---
 
 <Layout title="Blog">
@@ -20,10 +17,10 @@ try {
       ) : (
         posts.map((post) => (
           <BlogCard
-            href={post.url}
-            title={post.frontmatter.title}
-            date={post.frontmatter.date}
-            description={post.frontmatter.description}
+            href={`/posts/${post.slug}`}
+            title={post.data.title}
+            date={post.data.date}
+            description={post.data.description}
           />
         ))
       )

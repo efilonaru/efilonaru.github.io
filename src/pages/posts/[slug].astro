@@ -1,67 +1,17 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
 
-// Generate static paths at build time
+// No posts -> no paths -> no pages. No fallback page needed.
 export async function getStaticPaths() {
-  try {
-    const posts = await Astro.glob("../../content/posts/*.md"); // Get all .md files from the content directory
-
-    // If no posts are found, return a single path with a fallback message
-    if (posts.length === 0) {
-      return [
-        {
-          params: { slug: "no-posts" },
-          props: {
-            post: {
-              frontmatter: {
-                title: "No Posts Found",
-                date: new Date().toISOString().split("T")[0],
-              },
-              Content: () =>
-                "No blog posts have been created yet. Check back later!",
-            },
-          },
-        },
-      ];
-    }
-
-    return posts.map((post) => ({
-      params: {
-        slug: post.file.split("/").pop().split(".").shift(), // Get filename without extension
-      },
-      props: { post },
-    }));
-  } catch (error) {
-    // If there's an error (like directory doesn't exist), return the fallback
-    return [
-      {
-        params: { slug: "no-posts" },
-        props: {
-          post: {
-            frontmatter: {
-              title: "No Posts Found",
-              date: new Date().toISOString().split("T")[0],
-            },
-            Content: () =>
-              "No blog posts have been created yet. Check back later!",
-          },
-        },
-      },
-    ];
-  }
+  const posts = await getCollection("posts", ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
 }
 
-const { post } = Astro.props;
-const {
-  frontmatter: { title, date },
-} = post;
-const { Content } = post;
+const { post } = Astro.props as { post: CollectionEntry<"posts"> };
+const { Content } = await post.render();
 ---
 
-<Layout title={title}>
-  <article>
-    <h1>{title}</h1>
-    <time datetime={date}>{date}</time>
-    <Content />
-  </article>
-</Layout>
+<MarkdownPostLayout {...post.data}>
+  <Content />
+</MarkdownPostLayout>

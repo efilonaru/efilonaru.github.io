@@ -1,10 +1,21 @@
 ---
-import '@/styles/globals.css'
-const { frontmatter } = Astro.props;
 import Layout from "./Layout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+}
+
+const { title, description, date } = Astro.props;
 ---
-<Layout title={frontmatter.title} date={frontmatter.date}>
-    <article class="prose max-w-none ">
-        <slot />
-    </article>
+
+<Layout title={title} description={description}>
+  <article class="prose prose-invert prose-zinc max-w-none">
+    <h1>{title}</h1>
+    <time datetime={date.toISOString()} class="text-sm text-zinc-500">
+      {date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+    </time>
+    <slot />
+  </article>
 </Layout>
