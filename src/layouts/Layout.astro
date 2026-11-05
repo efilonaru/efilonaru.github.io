@@ -1,8 +1,8 @@
 ---
+import "@fontsource/jetbrains-mono/latin-400.css";
+import "@fontsource/jetbrains-mono/latin-700.css";
 import "@/styles/globals.css";
-import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-import { ViewTransitions } from "astro:transitions";
 import { siteConfig } from "../config";
 
 interface Props {
@@ -19,12 +19,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap"
-    />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalUrl} />
     <title>{pageTitle}</title>
@@ -34,14 +28,12 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta name="twitter:card" content="summary" />
-    <ViewTransitions />
   </head>
   <body
-    class="bg-black text-neutral-300 antialiased selection:bg-white selection:text-cyan-900"
+    class="bg-black text-neutral-400 antialiased selection:bg-white selection:text-black"
   >
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <main class="max-w-2xl mx-auto py-12">
-        <Navbar />
+      <main class="max-w-2xl mx-auto pt-32 pb-12">
         <slot />
         <Footer />
       </main>

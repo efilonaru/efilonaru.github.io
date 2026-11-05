@@ -16,12 +16,9 @@ const {
           href={link.href}
           target={link.href.startsWith("http") ? "_blank" : undefined}
           rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-          class="relative px-1 overflow-hidden group"
+          class="rounded-sm text-sm underline underline-offset-4 decoration-neutral-600 hover:text-neutral-200 hover:decoration-neutral-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-300"
         >
-          <span class="relative z-10 group-hover:text-black transition-colors duration-300 text-sm">
-            {link.text}
-          </span>
-          <span class="absolute left-0 bottom-0 w-full h-0 bg-white transition-all duration-300 ease-out group-hover:h-full" />
+          {link.text}
         </a>
       ))
     }
