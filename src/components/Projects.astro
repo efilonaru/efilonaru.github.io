@@ -1,0 +1,44 @@
+---
+const projects = [
+  {
+    title: "BudgetBonsai",
+    description:
+      "Android expense tracker with AI-powered financial health predictions.",
+    url: "https://github.com/BudgetBonsai/BudgetBonsai-app",
+    stack: ["Kotlin"],
+  },
+  {
+    title: "Kumpul",
+    description: "Collection of fun minigames to play with friends in person.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+  },
+];
+---
+
+<section aria-labelledby="projects-heading" class="mt-12">
+  <h2 id="projects-heading" class="text-lg font-bold text-neutral-200">Projects</h2>
+  <ul class="mt-4 space-y-6">
+    {
+      projects.map(({ title, description, url, stack }) => (
+        <li>
+          <h3 class="font-bold text-neutral-200">
+            {url ? (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rounded-sm underline underline-offset-4 decoration-neutral-600 hover:decoration-neutral-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-300"
+              >
+                {title}
+              </a>
+            ) : (
+              title
+            )}
+          </h3>
+          <p class="mt-1">{description}</p>
+          <p class="mt-1 text-sm text-neutral-500">{stack.join(" · ")}</p>
+        </li>
+      ))
+    }
+  </ul>
+</section>
