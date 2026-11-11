@@ -36,3 +36,9 @@ html {
 body {
   font-family: "JetBrains Mono", monospace;
 }
+
+@layer components {
+  .link {
+    @apply rounded-sm underline underline-offset-4 decoration-neutral-600 hover:text-neutral-200 hover:decoration-neutral-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-300;
+  }
+}

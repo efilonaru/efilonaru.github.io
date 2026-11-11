@@ -2,7 +2,6 @@
 import "@fontsource/jetbrains-mono/latin-400.css";
 import "@fontsource/jetbrains-mono/latin-700.css";
 import "@/styles/globals.css";
-import Footer from "../components/Footer.astro";
 import { siteConfig } from "../config";
 
 interface Props {
@@ -35,7 +34,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <main class="max-w-2xl mx-auto pt-32 pb-12">
         <slot />
-        <Footer />
       </main>
     </div>
   </body>
