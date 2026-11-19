@@ -83,8 +83,8 @@ The site is fast, accessible, and free of bloat. The problems are mostly about *
 
 ## Action checklist
 
-- [ ] Add a Swift/iOS project or fix the bio
-- [ ] Add 2–4 more projects with live links or screenshots
+- [x] Add a Swift/iOS project or fix the bio
+- [x] Add 2–4 more projects with live links or screenshots
 - [ ] Replace the favicon
 - [ ] Add `og:image` and switch to `summary_large_image`
 - [ ] Remove unused props from `Hero` / `Links`
